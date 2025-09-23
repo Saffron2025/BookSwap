@@ -1,0 +1,86 @@
+.requests-container {
+  padding: 2rem;
+  background: linear-gradient(135deg, #fefefe, #f3f8ff);
+  min-height: 100vh;
+  font-family: "Georgia", "Times New Roman", serif; /* unique readable font */
+}
+
+.requests-title {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+  font-family: "Trebuchet MS", "Georgia", serif; /* stylish heading font */
+}
+
+.no-requests {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #555;
+  margin-top: 1.5rem;
+}
+
+.requests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.request-card {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s;
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+.request-card:hover {
+  transform: translateY(-6px);
+}
+
+.request-book {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.request-author {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 0.3rem 0;
+}
+
+.request-condition {
+  font-size: 1rem;
+  color: #444;
+  margin: 0.3rem 0 1rem 0;
+}
+
+.request-status {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+}
+
+.status-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-weight: bold;
+  color: white;
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+.status-badge.pending {
+  background: #ffc107; /* yellow */
+}
+
+.status-badge.accepted {
+  background: #28a745; /* green */
+}
+
+.status-badge.declined {
+  background: #dc3545; /* red */
+}
