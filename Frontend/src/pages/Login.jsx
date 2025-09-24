@@ -1,14 +1,16 @@
 import { useState } from "react";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
-import "../Styles/Login.css";   // 👈 styling ka import
+import "../Styles/Login.css";
 
 function Login() {
   const [form, setForm] = useState({ identifier: "", password: "" });
+  const [loading, setLoading] = useState(false);   // 👈 loading state
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // start loader
 
     const payload = form.identifier.includes("@")
       ? { email: form.identifier, password: form.password }
@@ -20,6 +22,8 @@ function Login() {
       navigate("/books");
     } catch (err) {
       alert(err.response?.data?.msg || "Login failed");
+    } finally {
+      setLoading(false); // stop loader
     }
   };
 
@@ -47,8 +51,8 @@ function Login() {
           required
         />
 
-        <button className="login-button" type="submit">
-          Login
+        <button className="login-button" type="submit" disabled={loading}>
+          {loading ? "⏳ Logging in..." : "Login"}
         </button>
       </form>
     </div>

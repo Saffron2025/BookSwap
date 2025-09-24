@@ -1,20 +1,25 @@
 import { useState } from "react";
 import api from "../services/api";
 import { useNavigate } from "react-router-dom";
-import "../Styles/Signup.css";   // 👈 CSS import
+import "../Styles/Signup.css";
 
 function Signup() {
   const [form, setForm] = useState({ username: "", email: "", password: "" });
+  const [loading, setLoading] = useState(false);   // 👈 loading state
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // start loader
+
     try {
       await api.post("/auth/signup", form);
       alert("Signup success! Please login now.");
-      navigate("/"); // ✅ signup ke baad login page par bhejna
+      navigate("/"); 
     } catch (err) {
       alert(err.response?.data?.msg || "Signup failed");
+    } finally {
+      setLoading(false); // stop loader
     }
   };
 
@@ -48,8 +53,8 @@ function Signup() {
           required
         />
 
-        <button className="signup-button" type="submit">
-          Signup
+        <button className="signup-button" type="submit" disabled={loading}>
+          {loading ? "⏳ Signing up..." : "Signup"}
         </button>
       </form>
     </div>
