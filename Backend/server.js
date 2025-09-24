@@ -20,6 +20,10 @@ mongoose.connect(process.env.MONGO_URI)
 app.use("/api/auth", authRoutes);
 app.use("/api/books", bookRoutes);
 app.use("/api/requests", requestRoutes);
+app.get("/ping", (req, res) => {
+  res.status(200).json({ ok: true, msg: "pong 🟢" });
+});
+
 
 app.get("/", (req, res) => res.send("API Running"));
 
