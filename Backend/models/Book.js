@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const bookSchema = new mongoose.Schema({
   title: String,
@@ -8,4 +8,4 @@ const bookSchema = new mongoose.Schema({
   owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
 });
 
-export default mongoose.model("Book", bookSchema);
+module.exports = mongoose.model("Book", bookSchema);

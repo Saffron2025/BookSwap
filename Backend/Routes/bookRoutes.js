@@ -1,6 +1,6 @@
-import express from "express";
-import Book from "../models/Book.js";
-import { protect } from "../middleware/authMiddleware.js";
+const express = require("express");
+const Book = require("../models/Book");
+const { protect } = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
   res.json(books);
 });
 
-// ✅ Delete book
+// Delete book
 router.delete("/:id", protect, async (req, res) => {
   try {
     const book = await Book.findById(req.params.id);
@@ -36,4 +36,4 @@ router.delete("/:id", protect, async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;
