@@ -11,7 +11,12 @@ const requestRoutes = require("./Routes/requestRoutes");
 dotenv.config();
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: ["https://book-swap-chi.vercel.app"], // 👈 tumhara frontend url
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 app.use(express.json());
 
 // MongoDB connect
